@@ -1,0 +1,27 @@
+Sebagai Profesor Sistem Informasi, saya akan menganalisis abstrak-abstrak tersebut dengan cermat untuk mengidentifikasi celah riset terkait fokus perilaku pengguna.
+
+---
+
+## 🔎 Langkah 1 — Identifikasi Batasan (Limitations)
+
+Batasan utama dari ketiga paper di atas, khususnya yang berkaitan dengan konteks **Fokus Perilaku Pengguna**, adalah bahwa semuanya merupakan **analisis bibliometrik**. Pendekatan ini berfokus pada pemetaan lanskap publikasi, tren penelitian, dan topik-topik yang dibahas dalam literatur, bukan pada studi empiris mengenai perilaku aktual individu atau kelompok yang berinteraksi dengan sistem atau fenomena yang diteliti.
+
+1.  **Paper 1 (Pain):** Meskipun membahas "bidang nyeri", analisisnya terbatas pada pola publikasi dan profil jurnal. Tidak ada eksplorasi mengenai perilaku pasien dalam mengelola nyeri, perilaku profesional kesehatan dalam diagnosis dan pengobatan nyeri, atau bahkan perilaku peneliti di luar aktivitas publikasi. Ini adalah analisis meta-data penelitian, bukan perilaku subjek penelitian atau pengguna hasil penelitian.
+2.  **Paper 2 (Intelligent Maritime Shipping):** Meninjau teknologi internet dan infrastruktur pelabuhan otomatis. Meskipun menyebut "inovasi sistem logistik internasional" dan "integrasi teknologi", abstrak ini sepenuhnya mengabaikan perilaku manusia. Tidak ada diskusi tentang bagaimana operator pelabuhan, kapten kapal, manajer logistik, atau pemangku kepentingan manusia lainnya berinteraksi dengan, mengadopsi, mempercayai, atau bahkan menolak sistem maritim cerdas dan otomatis ini. Fokusnya adalah pada teknologi dan dampaknya pada ekosistem atau kebijakan, bukan pada pengguna.
+3.  **Paper 3 (Digitalisation in Agro-Export Logistics):** Menyelidiki "efektivitas digitalisasi" untuk meningkatkan "logistik otomatis". Sama seperti yang lain, ini adalah analisis bibliometrik. Meskipun "efektivitas" bisa secara implisit melibatkan hasil yang dipengaruhi manusia, abstrak ini tidak secara langsung membahas perilaku manajer logistik, petani, atau pihak lain yang terlibat dalam rantai pasok agro-ekspor yang mengadopsi, menggunakan, atau beradaptasi dengan sistem digitalisasi dan otomatisasi ini. Tidak ada pembicaraan tentang penerimaan pengguna, resistensi, kebutuhan pelatihan, atau perubahan peran kerja.
+
+Secara kolektif, semua paper ini mengasumsikan keberadaan dan evolusi teknologi atau topik penelitian tanpa menggali bagaimana manusia sebagai "pengguna" atau "aktor" di dalamnya berinteraksi, beradaptasi, atau dipengaruhi pada tingkat perilaku. Mereka melewatkan konteks interaksi manusia-sistem, faktor adopsi, resistensi, kepercayaan, dan dampak perilaku dari teknologi yang mereka analisis secara bibliometrik.
+
+---
+
+## 🕳️ Langkah 2 — Rumuskan Research Gaps
+
+Berdasarkan limitasi di Langkah 1, berikut adalah **tepat 3 poin utama research gap** yang belum terselesaikan dan spesifik terhadap konteks **Fokus Perilaku Pengguna**:
+
+*   **Gap 1: Pemahaman Komprehensif tentang Faktor-faktor Adopsi dan Resistensi Pengguna terhadap Sistem Otomatisasi Lanjutan**
+    *   **Penjelasan:** Abstrak-abstrak tersebut menyoroti tren menuju otomatisasi dan digitalisasi di berbagai sektor (logistik, kesehatan). Namun, tidak ada penelitian yang secara empiris mengidentifikasi dan menganalisis faktor-faktor perilaku (misalnya, persepsi kemudahan penggunaan, kegunaan, pengaruh sosial, kondisi fasilitas, kepercayaan) yang mendorong atau menghambat adopsi sistem otomatisasi canggih oleh pengguna akhir atau pekerja yang terdampak. Penelitian yang ada cenderung deskriptif (bibliometrik) atau berorientasi pada teknologi/proses, mengabaikan dimensi psikologis dan sosiologis dari penerimaan atau penolakan teknologi.
+    *   **Implikasi:** Tanpa pemahaman yang mendalam tentang faktor-faktor perilaku ini, implementasi sistem otomatisasi dapat menghadapi resistensi yang signifikan, tingkat pemanfaatan yang rendah, dan kegagalan dalam mencapai potensi penuhnya, meskipun secara teknis sistem tersebut canggih. Hal ini dapat mengakibatkan pemborosan investasi dan menghambat inovasi.
+
+*   **Gap 2: Pergeseran Peran, Keterampilan, dan Proses Pengambilan Keputusan Manusia dalam Ekosistem yang Sangat Otomatis**
+    *   **Penjelasan:** Dengan adanya "intelligent maritime shipping" dan "automated logistics", terjadi pergeseran fundamental dalam cara kerja dilakukan. Namun, tidak ada studi yang secara eksplisit meneliti bagaimana otomatisasi ini mengubah peran pekerjaan manusia, keterampilan yang dibutuhkan (misalnya, dari operator fisik menjadi pengawas sistem), atau bagaimana proses pengambilan keputusan manusia beradaptasi ketika berinteraksi dengan sistem cerdas. Dampak perilaku terhadap beban kerja kognitif, kebutuhan pelatihan ulang, atau potensi *automation bias* (kecenderungan untuk terlalu mengandalkan atau terlalu percaya pada sistem otomatis) belum dieksplorasi.
+    *   **Implikasi:** Kurangnya penelitian di area ini dapat menyebabkan kesenjangan keterampilan yang parah, ketidakpuasan karyawan, stres kerja, dan bahkan potensi insiden keamanan karena ketidaksesuaian antara kemampuan manusia dan tuntutan sistem otomatis. Ini juga menghambat pengembangan kurikulum pendidikan dan strategi manajemen sumber daya manusia yang adaptif.
