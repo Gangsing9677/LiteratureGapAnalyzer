@@ -455,7 +455,7 @@ def call_gemini(prompt: str) -> str:
         generation_config=genai.types.GenerationConfig(
             temperature=0.4,
             top_p=0.92,
-            max_output_tokens=8192,
+            max_output_tokens=65536,
         ),
     )
     return response.text
