@@ -254,7 +254,7 @@ st.markdown(f"""
 # ── Sidebar ───────────────────────────────────────────────────────────────────
 with st.sidebar:
     st.markdown("**Configuration**")
-    max_papers = st.slider("Papers to retrieve", min_value=5, max_value=25, value=10, step=5)
+    max_papers = st.slider("Papers to retrieve", min_value=5, max_value=25, value=5, step=5)
     min_year = st.number_input("Minimum publication year", min_value=2000, max_value=2024, value=2018)
 
     if st.session_state.papers is not None:
