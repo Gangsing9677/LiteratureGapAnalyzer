@@ -36,7 +36,7 @@ st.markdown("""
         color: #1f2937;
     }
     .stApp { background-color: #ffffff !important; }
-    #MainMenu, footer { visibility: hidden; }
+    #MainMenu, footer, header { visibility: hidden; }
 
     /* Streamlit sidebar */
     [data-testid="stSidebar"] {
