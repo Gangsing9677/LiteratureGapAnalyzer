@@ -14,7 +14,6 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") or st.secrets.get("GEMINI_API_KEY",
 # ────────────────────────────────────────────────────────────────────────────
 st.set_page_config(
     page_title="Literature Gap Analyzer",
-    page_icon="📚",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
@@ -240,7 +239,7 @@ st.markdown("""
     .gap-content a:hover { text-decoration: underline; }
 
     /* ── Divider ── */
-    .divider { border: none; border-top: 1px solid #e0e0e0; margin: 2rem 0; }
+    .divider { border: none; border-top: 1px solid #e0e0e0; margin: 0.5rem 0; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -248,7 +247,7 @@ st.markdown("""
 # HEADER
 st.markdown("""
 <div class="header-section">
-    <h1>📚 Literature Gap Analyzer</h1>
+    <h1>Literature Gap Analyzer</h1>
     <p>Automated research gap identification using dual API retrieval and AI-powered Chain-of-Thought analysis</p>
     <div class="provider-badges">
         <span class="badge">Semantic Scholar</span>
@@ -274,7 +273,6 @@ genai.configure(api_key=GEMINI_API_KEY)
 
 # ────────────────────────────────────────────────────────────────────────────
 # INPUT SECTION
-st.markdown('<div class="input-container">', unsafe_allow_html=True)
 st.markdown("### Step 1: Configure Your Analysis")
 
 col1, col2 = st.columns([2, 1])
