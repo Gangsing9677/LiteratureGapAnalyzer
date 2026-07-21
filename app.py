@@ -103,7 +103,7 @@ st.markdown("""
 
     /* ── Form inputs ── */
     .stTextInput input, .stSelectbox select {
-        border: 1px solid #d0d0d0 !important;
+        border: 1px solid #000000 !important;
         border-radius: 8px !important;
         padding: 0.65rem 0.9rem !important;
         font-size: 0.95rem !important;
