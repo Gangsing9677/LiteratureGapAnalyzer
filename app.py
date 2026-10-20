@@ -6,10 +6,23 @@ import time
 import pandas as pd
 from dotenv import load_dotenv
 from difflib import SequenceMatcher
+from datetime import date
 
 load_dotenv()
 
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") or st.secrets.get("GEMINI_API_KEY", None)
+def get_config(name: str) -> str:
+    value = os.getenv(name)
+    if value:
+        return value
+    try:
+        return st.secrets.get(name, "")
+    except FileNotFoundError:
+        return ""
+
+
+GEMINI_API_KEY = get_config("GEMINI_API_KEY")
+GEMINI_MODEL = get_config("GEMINI_MODEL") or "gemini-3.8-flash"
+CURRENT_YEAR = date.today().year
 
 # ────────────────────────────────────────────────────────────────────────────
 st.set_page_config(
@@ -301,7 +314,8 @@ with col3:
     max_papers = st.slider("Papers per API", 5, 25, 10, 5, help="Total papers will be ~2x after merging sources")
 
 with col4:
-    min_year = st.number_input("Min. year", 2000, 2026, 2020, help="Only retrieve papers from this year onwards")
+    min_year = st.number_input("Min. year", 2000, CURRENT_YEAR, 2020, help="Only retrieve papers from this year onwards")
+    st.caption(f"Retrieval includes papers through {CURRENT_YEAR}.")
 
 st.markdown('</div>', unsafe_allow_html=True)
 
@@ -370,8 +384,8 @@ def deduplicate_papers(papers1: list[dict], papers2: list[dict]) -> tuple[list[d
 
 def fetch_papers_semantic_scholar(query: str, limit: int, min_year: int) -> list[dict]:
     url = "https://api.semanticscholar.org/graph/v1/paper/search"
-    params = {"query": query, "limit": limit, "fields": "title,abstract,year,authors,citationCount,url,externalIds,paperId"}
-    s2_key = os.getenv("SEMANTIC_SCHOLAR_API_KEY", "")
+    params = {"query": query, "limit": limit, "year": f"{min_year}-{CURRENT_YEAR}", "fields": "title,abstract,year,authors,citationCount,url,externalIds,paperId"}
+    s2_key = get_config("SEMANTIC_SCHOLAR_API_KEY")
     headers = {"User-Agent": "LiteratureGapAnalyzer/2.0"}
     if s2_key:
         headers["x-api-key"] = s2_key
@@ -384,7 +398,7 @@ def fetch_papers_semantic_scholar(query: str, limit: int, min_year: int) -> list
                 continue
             resp.raise_for_status()
             raw = resp.json().get("data", [])
-            return [p for p in raw if p.get("abstract") and p.get("year") and p["year"] >= min_year]
+            return [p for p in raw if p.get("abstract") and p.get("year") and min_year <= p["year"] <= CURRENT_YEAR]
         except requests.exceptions.Timeout:
             if attempt < 2:
                 time.sleep(5)
@@ -394,7 +408,8 @@ def fetch_papers_semantic_scholar(query: str, limit: int, min_year: int) -> list
 
 def fetch_papers_openalex(query: str, limit: int, min_year: int) -> list[dict]:
     url = "https://api.openalex.org/works"
-    params = {"search": query, "per_page": limit, "sort": "cited_by_count:desc"}
+    params = {"search": query, "per_page": limit, "sort": "cited_by_count:desc",
+              "filter": f"from_publication_date:{min_year}-01-01,to_publication_date:{CURRENT_YEAR}-12-31"}
     headers = {"User-Agent": "LiteratureGapAnalyzer/2.0"}
     
     try:
@@ -407,7 +422,7 @@ def fetch_papers_openalex(query: str, limit: int, min_year: int) -> list[dict]:
             if not work.get("abstract_inverted_index"):
                 continue
             year = work.get("publication_year")
-            if not year or year < min_year:
+            if not year or not min_year <= year <= CURRENT_YEAR:
                 continue
             
             abstract_dict = work.get("abstract_inverted_index", {})
@@ -518,7 +533,7 @@ DAFTAR REFERENSI:
     return prompt
 
 def call_gemini(prompt: str) -> str:
-    model = genai.GenerativeModel("gemini-2.5-flash")
+    model = genai.GenerativeModel(GEMINI_MODEL)
     response = model.generate_content(
         prompt,
         generation_config=genai.types.GenerationConfig(
@@ -645,7 +660,7 @@ if run:
         status_text = st.empty()
         
         prompt = build_prompt(papers, domain)
-        status_text.text("⏳ Analyzing gaps with Gemini 2.5 Flash...")
+        status_text.text(f"⏳ Analyzing gaps with {GEMINI_MODEL}...")
         progress_bar.progress(50)
         
         try:
